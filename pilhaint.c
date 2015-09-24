@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "pilhaint.h"
 /*
  * title: Pilha 
  * date: 20/09/2015
@@ -14,21 +15,6 @@
  * 
  *
  */
-typedef struct No{
-	int num;
-	struct No *prox;
-}no;
-
-typedef struct Pilha{
-	no *topo;
-	int tamanho;
-}pilha;
-
-
-void inicia(pilha *p);
-void empty(pilha *p);
-void insertNum(pilha *p, int num);
-int getNum(pilha *p);
 
 
 void inicia(pilha *p){
@@ -116,7 +102,7 @@ void insertNum(pilha *p, int num){
 	push(p, num);
 }
 
-int main(){
+/*int main(){
 	
 	 pilha p;
 	 inicia(&p);
@@ -133,5 +119,5 @@ int main(){
 	 
 	return 0;
 }
-
+*/
 
