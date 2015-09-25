@@ -1,20 +1,25 @@
+/*
+ * title: Pilha 
+ * date: 20/09/2015
+ * description: Exercicio de ALG1.
+ *				Consiste em uma pilha de inteiros
+ *				Deve-se criar uma pilha e usar a função iniciar().
+ *				Para empilhar deve-se usar o a função insertNum().
+ *				E para desempilhar deve-se usar a função getNum().
+ *				Exemplo de uso na função main().
+ * author: Allan Ribeiro da Costa   NºUSP 9364819
+ *         Marcos Vinicius Volpato  NºUSP 9364872
+ * 
+ *
+ */
+ 
 #include <stdio.h>
 #include <stdlib.h>
-#include "pilhaint.h"
+#include "loop.h"
 
 int main(int argc, char *argv[]) {
-	pilha p;
-	inicia(&p);
-	 
-	insertNum(&p, 7);
-	insertNum(&p, 14); 
-	insertNum(&p, 21);
-	insertNum(&p, 28); 
-	 
-	printf("%d \n\n", getNum(&p));
-	printf("%d \n\n", getNum(&p));
-	printf("%d \n\n", getNum(&p));
-	printf("%d \n\n", getNum(&p));
+	loop();
+	
 	system("pause");
 	return 0;
 }
