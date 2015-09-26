@@ -28,7 +28,7 @@ Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0000000000000000000000000
+CompilerSettings=0000000000000000001000000
 UnitCount=5
 
 [VersionInfo]
@@ -60,18 +60,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit2]
-FileName=pilhaint.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit3]
-FileName=pilhaint.h
+FileName=loop.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -81,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=loop.c
+FileName=pilhaNum.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -91,7 +81,37 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=loop.h
+FileName=pilhaNum.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=pilhaNum.h
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=pilhaNum.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=loop.c
 CompileCpp=0
 Folder=
 Compile=1
