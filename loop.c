@@ -5,8 +5,9 @@
 //#include "pilhaint.h"
 #include "pilhaNum.h"
 #include "loop.h"
+#include "faz_calculo.h"
 #define MAX_LENTH 200
-#define DEBUG 0
+#define DEBUG 1
 
 int loop(){
     //0 1 2 3 4 5 6 7 8 9 + - * / C E
@@ -31,7 +32,7 @@ int loop(){
             stop = 1;
             return 1;
         }
-        int erro = calcular(g_char);
+        int erro = calcular(g_char, &p);
         if(erro == 1){
         	printf("Para fazer um calculo, inicie com E\n");
         	return 1;
@@ -69,23 +70,18 @@ int calcular(char g_char[], pilha *p){
 				insertNum(p, g_char[i] - 48);
 				if(DEBUG)//criar var
 					printf("\n%d\n", g_char[i] - 48);
-				count++;
+				count++;//considerar usar um continue
 			}
 			//se for e ou E desempilha enq count > 0 decrementando
 			if(g_char[i] == 'e' || g_char[i] == 'E' && i != 0){
 				if(DEBUG)
         			printf("enter denovo");
-				int num = 0;
-				int pot = 0;
-				while(count > 0){
-					num += (getNum(p) * pow(10, pot));
-					if(DEBUG)
-        				printf("\n%d\n", num);
-					count--;
-					pot++;
-				}
-				insertNum(p, num);
-				printf("\nnum= %d \n", num);
+        		faz_calculo(p, count);
+			}
+			if(g_char[strlen(g_char)-1] != 'e' && g_char[strlen(g_char)-1] != 'E' && i == strlen(g_char)-1){
+				if(DEBUG)
+					printf("\n strlen: %d", strlen(g_char));
+				faz_calculo(p, count);
 			}
 //			if(g_char[0] == '-')//operadores
 //			if(g_char[0] == '+')
