@@ -3,12 +3,11 @@
  * date: 20/09/2015
  * description: Exercicio de ALG1.
  *				Consiste em uma pilha de inteiros
- *				Deve-se criar uma pilha e usar a funÃ§Ã£o iniciar().
- *				Para empilhar deve-se usar o a funÃ§Ã£o insertNum().
- *				E para desempilhar deve-se usar a funÃ§Ã£o getNum().
- *				Exemplo de uso na funÃ§Ã£o main().
- * author: Allan Ribeiro da Costa   NÂºUSP 9364819
- *         Marcos Vinicius Volpato  NÂºUSP 9364872
+ *				Deve-se criar uma pilha e usar a função iniciar().
+ *				Para empilhar deve-se usar o a função insertNum().
+ *				E para desempilhar deve-se usar a função getNum().
+ * author: Allan Ribeiro da Costa   NºUSP 9364819
+ *         Marcos Vinicius Volpato  NºUSP 9364872
  * 
  *
  */

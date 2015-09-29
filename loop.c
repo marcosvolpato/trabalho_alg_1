@@ -11,8 +11,7 @@
 
 int loop(){
     //0 1 2 3 4 5 6 7 8 9 + - * / C E
-    pilha p;
-	inicia(&p);
+    pilha *p = inicia();
     int stop = 0;
     char g_char[MAX_LENTH];
     zerarStr(g_char);
@@ -32,16 +31,12 @@ int loop(){
             stop = 1;
             return 1;
         }
-        int erro = calcular(g_char, &p);
+        int erro = calcular(g_char, p);
         if(erro == 1){
         	printf("Para fazer um calculo, inicie com E\n");
-        	return 1;
 		}
-        	
-        
-        
     }
-    
+    return 1;
 	//insertNum(&p, 7);
 	//printf("%d \n\n", getNum(&p));
 }
@@ -76,15 +71,19 @@ int calcular(char g_char[], pilha *p){
 			if(g_char[i] == 'e' || g_char[i] == 'E' && i != 0){
 				if(DEBUG)
         			printf("enter denovo");
-        		faz_calculo(p, count);
+        		count = faz_calculo(p, count);
 			}
 			if(g_char[strlen(g_char)-1] != 'e' && g_char[strlen(g_char)-1] != 'E' && i == strlen(g_char)-1){
 				if(DEBUG)
 					printf("\n strlen: %d", strlen(g_char));
-				faz_calculo(p, count);
+				count = faz_calculo(p, count);
 			}
 //			if(g_char[0] == '-')//operadores
-//			if(g_char[0] == '+')
+			if(g_char[i] == '+'){
+				faz_soma(p);
+				count = 0;
+			}
+			
 //			if(g_char[0] == '/')
 //			if(g_char[0] == '*')
 //			if(g_char[0] == 'c' || g_char[0] == 'C')//clean
@@ -95,7 +94,10 @@ int calcular(char g_char[], pilha *p){
 		}
 		return 0;
 	}else{
-		return 1;
+		if(g_char[0] == 'v')
+				consulta(p);
+		else
+			return 1;
 	}
 		
 	

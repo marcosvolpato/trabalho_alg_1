@@ -8,7 +8,8 @@ typedef struct Pilha{
 	int tamanho;
 }pilha;
 
-void inicia(pilha *p);
+void *inicia();
 void empty(pilha *p);
+void consulta(pilha *p);
 void insertNum(pilha *p, int num);
 int getNum(pilha *p);

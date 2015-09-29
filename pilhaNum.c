@@ -2,16 +2,17 @@
 #include <stdlib.h>
 #include "pilhaNum.h"
 
-void inicia(pilha *p){
-	p->topo = NULL;
-	p->tamanho = 0;
+void *inicia(){
+	pilha *p = (pilha *)malloc(sizeof(pilha));
+	if(p != NULL){
+		p->topo = NULL;
+		p->tamanho = 0;
+	}
+	return p;
 }
 
 int isEmpty(pilha *p){
-	if(p->topo == NULL)
-		return 1;
-	else
-		return 0;
+	return (p->topo == NULL);
 }
 
 no *aloca(int num){
@@ -25,53 +26,76 @@ no *aloca(int num){
 	}
 }
 
-void libera(pilha *p){
-	if(!isEmpty(p)){
-		no *ant, *atual;
-		atual = p->topo;
+void deletaPilha(pilha **p){
+	if(!isEmpty(*p)){
+		no *aux = (*p)->topo;
 		
-		while(atual != NULL){
-		ant = atual->anterior;
-		free(atual);
-		atual = ant;
+		while(aux != NULL){
+			no *aux2 =aux;
+			aux = aux->anterior;
+			free(aux2);
 		}
 	}
+	free(*p);
+	*p = NULL;
 }
 
 void push(pilha *p, int num){
-	no *novo = aloca(num);
-	if(!isEmpty(p)){
-		novo->anterior = p->topo;
-		
-	}else{
-		novo->anterior = NULL;
+	if(isEmpty(p)){
+		p->topo = aloca(num);
+		p->topo->anterior = NULL;
 	}
-	p->topo = novo;
+	else{
+		no *aux = p->topo;
+		p->topo = aloca(num);
+		p->topo->anterior = aux;
+	}
 	p->tamanho++;
 }
 
-no *pop(pilha *p){
-	if(p->topo == NULL){
-		printf("pilha vazia\n\n\n");
+int pop(pilha *p){
+	if(isEmpty(p)){
 		return NULL;
 	}else{
+		int num = p->topo->num;
+		no *aux = p->topo;
 		if(p->topo->anterior != NULL){
-			no *aux = p->topo;
 			p->topo = p->topo->anterior;
-			return aux;
+			free(aux);
+			return num;
 		}else{
-			return p->topo;
+			p->topo = NULL;
+			free(aux);
+			return num;
 		}
+		p->tamanho--;
+	}
+}
+
+void consulta(pilha *p){
+	printf("\n\nResultado da pesquisa:\n");
+	no *aux = p->topo;//topo(p);
+	while(aux != NULL){
+		printf("%d\n", aux->num);
+		if(aux->anterior != NULL)
+			aux = aux->anterior;
+		else
+			break;
 	}
 }
 
 int getNum(pilha *p){
-	no *aux = pop(p);
-	int num = aux->num;
-	free(aux);
-	return num;
+	return pop(p);
 }
 
 void insertNum(pilha *p, int num){
 	push(p, num);
+}
+int tamanho(pilha *p){
+	return p->tamanho;
+}
+int *topo(pilha *p){
+	if(!isEmpty(p))
+		return &(p->topo->num);
+	return NULL;
 }

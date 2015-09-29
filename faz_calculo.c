@@ -4,7 +4,7 @@
 #define DEBUG 1
 
 //mudar para nome mais especifico
-faz_calculo(pilha *p, int count){
+int faz_calculo(pilha *p, int count){
 
 	int num = 0;
 	int pot = 0;
@@ -16,4 +16,20 @@ faz_calculo(pilha *p, int count){
 		pot++;
 	}
 	insertNum(p, num);
+	return count;
 }
+
+int faz_soma(pilha *p){
+	int num = getNum(p) + getNum(p);
+	insertNum(p, num);
+	printf("\n\n soma = %d \n", num);
+	return num;
+}
+
+
+
+
+
+
+
+
