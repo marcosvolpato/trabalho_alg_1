@@ -26,8 +26,38 @@ int faz_soma(pilha *p){
 	return num;
 }
 
+int faz_mult(pilha *p){
+    int num = getNum(p) * getNum(p);
+    insertNum(p, num);
+	printf("\n\n mult = %d \n", num);
+	return num;
+}
 
+int faz_div(pilha *p){
+    int num = getNum(p) / getNum(p);//ver quem divide quem
+    insertNum(p, num);
+	printf("\n\n div = %d \n", num);
+	return num;
+}
 
+int faz_sub(pilha *p){
+    int num = getNum(p) - getNum(p);//ver quem subtrai quem
+    insertNum(p, num);
+	printf("\n\n sub = %d \n", num);
+	return num;
+}
+
+int clear_calc(pilha *p){
+	if(!isEmpty(p)){
+		while(p->topo->anterior != NULL)
+			getNum(p);
+		getNum(p);
+		return 0;
+	}else{
+		printf("Erro ao evaziar a pilha!\nA pilha ja esta vazia\n\n");
+		return 1;
+	}
+}
 
 
 

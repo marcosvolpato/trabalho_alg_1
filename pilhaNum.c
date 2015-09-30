@@ -59,6 +59,7 @@ int pop(pilha *p){
 	}else{
 		int num = p->topo->num;
 		no *aux = p->topo;
+		
 		if(p->topo->anterior != NULL){
 			p->topo = p->topo->anterior;
 			free(aux);
@@ -74,7 +75,7 @@ int pop(pilha *p){
 
 void consulta(pilha *p){
 	printf("\n\nResultado da pesquisa:\n");
-	no *aux = p->topo;//topo(p);
+	no *aux = p->topo;
 	while(aux != NULL){
 		printf("%d\n", aux->num);
 		if(aux->anterior != NULL)
@@ -91,9 +92,11 @@ int getNum(pilha *p){
 void insertNum(pilha *p, int num){
 	push(p, num);
 }
+
 int tamanho(pilha *p){
 	return p->tamanho;
 }
+
 int *topo(pilha *p){
 	if(!isEmpty(p))
 		return &(p->topo->num);

@@ -1,3 +1,6 @@
+#ifndef _PILHANUM_H_
+#define _PILHANUM_H_
+
 typedef struct No{
 	int num;
 	struct No *anterior;
@@ -13,3 +16,5 @@ void empty(pilha *p);
 void consulta(pilha *p);
 void insertNum(pilha *p, int num);
 int getNum(pilha *p);
+
+#endif

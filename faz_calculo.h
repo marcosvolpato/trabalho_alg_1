@@ -3,5 +3,10 @@
 
 int faz_calculo(pilha *p, int count);
 int faz_soma(pilha *p);
+int faz_mult(pilha *p);
+int faz_div(pilha *p);
+int faz_sub(pilha *p);
+int clear_calc(pilha *p);
 
 #endif
+
