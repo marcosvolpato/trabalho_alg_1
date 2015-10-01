@@ -3,18 +3,18 @@
 #include <math.h>
 
 //mudar para nome mais especifico
-int faz_calculo(pilha *p, int count){
-	if(count > 0){
-		int num = 0;
-		int pot = 0;
-		while(count > 0){
-			num += (getNum(p) * pow(10, pot));
-			count--;
-			pot++;
+int faz_calculo(pilha *p){
+	if(!isEmpty(p)){
+		int num1 = getNum(p);
+		if(isEmpty(p)){
+			insertNum(p, num1);
+			return 0;
 		}
+		int num2 = getNum(p);
+		int num = num1 + (num2 * 10);
 		insertNum(p, num);
 	}
-	return count;
+	return 0;
 }
 
 int faz_soma(pilha *p){

@@ -74,15 +74,28 @@ int pop(pilha *p){
 }
 
 void consulta(pilha *p){
-	printf("\n\nResultado da pesquisa:\n");
+	//printf("\n\nResultado da pesquisa:\n");
 	no *aux = p->topo;
 	while(aux != NULL){
-		printf("%d\n", aux->num);
+		printf("%d ", aux->num);
 		if(aux->anterior != NULL)
 			aux = aux->anterior;
 		else
 			break;
 	}
+}
+void consulta_inversa(pilha *p){
+	pilha *p2 = inicia();
+	no *aux = p->topo;
+	while(aux != NULL){
+		push(p2, aux->num);
+		if(aux->anterior != NULL)
+			aux = aux->anterior;
+		else
+			break;
+	}
+	consulta(p2);
+	deletaPilha(&p2);
 }
 
 int getNum(pilha *p){

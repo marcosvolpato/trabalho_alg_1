@@ -8,7 +8,6 @@
 #define MAX_LENTH 200
 
 int loop(){
-    //0 1 2 3 4 5 6 7 8 9 + - * / C E
     pilha *p = inicia();
     char g_char[MAX_LENTH];
     printf("\n\n>> POLISH CALCULATOR <<\n");
@@ -25,101 +24,103 @@ int loop(){
         //define a saida do programa
         char sair_s[] = "s";
         char sair_S[] = "S";
-        if(!strcmp(g_char, sair_S) || !strcmp(g_char, sair_s)){
+        if(!strcmp(g_char, sair_S) || !strcmp(g_char, sair_s))
             return 1;
-        }
         
         int erro = calcular(g_char, p);
-        if(erro == 1){
+        if(erro == 1)
         	printf("Para fazer um calculo, inicie com E\n");
-		}
     }
     return 1;
 }
+
 int isNum(char c){
 	return(c > 47 && c < 58);
 }
+
 int isEnter(char c){
 	return(c == 'e' || c == 'E');
 }
 
+int isClear(char c){
+	return(c == 'c' || c == 'C');
+}
+
+int isConsulta(char c){
+	return(c == 'v' || c == 'V');
+}
+
+
 int calcular(char g_char[], pilha *p){
 	//E 9 0 E 2 0 E 1 5 E 1 3 - * E 5 + /
 	if( isEnter(g_char[0]) || !isEmpty(p)){
-		int i = 0, count = 0;
+		int i = 0;
 		
 		while(g_char[i] != '\0'){
-			if(!isNum(g_char[i]) && !isEnter(g_char[i]) && isNum(g_char[i-1])){
-				faz_calculo(p, count);
-				count = 0;
+			
+			if(!isClear(g_char[i]) && !isConsulta(g_char[i])){
+				if(isEmpty(p))
+					printf("- ");
+				consulta_inversa(p);
+				printf("\n");
 			}
-			//se o caracter for um numero insere ele(observar ascii) incr count
+			
 			if(isNum(g_char[i])){
 				insertNum(p, g_char[i] - 48);
-				count++;
-				if(i == strlen(g_char)-1){
-					count = faz_calculo(p, count);
-					count = 0;
-				}
+				if(isNum(g_char[i-1] )|| isEnter(g_char[i-1]))
+					faz_calculo(p);
 				i++;
 				continue;
 			}
-			
 			if(isEnter(g_char[i])){
-        		count = faz_calculo(p, count);
         		insertNum(p, 0);
-        		count++;
         		i++;
         		continue;
 			}
-			
-            if(g_char[i] == '-'){
-				faz_sub(p);//ver quem subtrai quem
-				count = 0;
+			if(g_char[i] == '-'){
+				faz_sub(p);
 				i++;
 				continue;
 			}
 			
 			if(g_char[i] == '+'){
 				faz_soma(p);
-				count = 0;
 				i++;
 				continue;
 			}
 			
             if(g_char[i] == '/'){
-				faz_div(p);//VER NA DESCRIÇÃO DO TRABALHO QUEM DIVIDE QUEM
-				count = 0;
+				faz_div(p);
 				i++;
 				continue;
 			}
 			
             if(g_char[i] == '*'){
 				faz_mult(p);
-				count = 0;
 				i++;
 				continue;
 			}
-			
-			if(g_char[i] == 'c' || g_char[i] == 'C'){
+			if(isClear(g_char[i])){
 				clear_calc(p);
-				count = 0;
 				i++;
+				continue;
 			}
-			
-			if(g_char[i] == 'v' || g_char[i] == 'V' && strlen(g_char) == 1){
+			if(isConsulta(g_char[i]) && strlen(g_char) == 1){
 				consulta(p);
 				i++;
 			}
 				
 		}
+		if(!isConsulta(g_char[i-1]))
+		consulta_inversa(p);
+		printf("\n");
 		return 0;
 	}else{
-		if(g_char[0] == 'v' || g_char[0] == 'V')
+		if(isConsulta(g_char[0]))
 				consulta(p);
 				
 		else{
-			if(g_char[0] == 'c' || g_char[0] == 'C')
+			if(isClear(g_char[0]))
 				clear_calc(p);
 				
 			else

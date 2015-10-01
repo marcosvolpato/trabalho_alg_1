@@ -14,6 +14,7 @@ typedef struct Pilha{
 void *inicia();
 int isEmpty(pilha *p);
 void consulta(pilha *p);
+void consulta_inversa(pilha *p);
 void insertNum(pilha *p, int num);
 int getNum(pilha *p);
 
