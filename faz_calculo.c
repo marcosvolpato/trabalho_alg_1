@@ -1,49 +1,66 @@
 #include "pilhanum.h"
 #include <stdio.h>
 #include <math.h>
-#define DEBUG 1
 
 //mudar para nome mais especifico
 int faz_calculo(pilha *p, int count){
-
-	int num = 0;
-	int pot = 0;
-	while(count > 0){
-		num += (getNum(p) * pow(10, pot));
-		if(DEBUG)
-			printf("\n%d\n", num);
-		count--;
-		pot++;
+	if(count > 0){
+		int num = 0;
+		int pot = 0;
+		while(count > 0){
+			num += (getNum(p) * pow(10, pot));
+			count--;
+			pot++;
+		}
+		insertNum(p, num);
 	}
-	insertNum(p, num);
 	return count;
 }
 
 int faz_soma(pilha *p){
 	int num = getNum(p) + getNum(p);
 	insertNum(p, num);
-	printf("\n\n soma = %d \n", num);
+	//printf("\n\n soma = %d \n", num);
 	return num;
 }
 
 int faz_mult(pilha *p){
-    int num = getNum(p) * getNum(p);
+	int num1 = getNum(p);
+	if(isEmpty(p)){
+		insertNum(p, num1);
+		return num1;
+	}
+	int num2 = getNum(p);
+    int num = num1 * num2;
     insertNum(p, num);
-	printf("\n\n mult = %d \n", num);
+	//printf("\n\n mult = %d \n", num);
 	return num;
 }
 
 int faz_div(pilha *p){
-    int num = getNum(p) / getNum(p);//ver quem divide quem
+	int num1 = getNum(p), num;
+	if(isEmpty(p)){
+		insertNum(p, num1);
+		return num1;
+	}
+	int num2 = getNum(p);
+    num = num2 / num1;
     insertNum(p, num);
-	printf("\n\n div = %d \n", num);
+	//printf("\n\n div = %d \n", num);
 	return num;
 }
 
 int faz_sub(pilha *p){
-    int num = getNum(p) - getNum(p);//ver quem subtrai quem
+	int num1 = getNum(p), num;
+	if(isEmpty(p)){
+		insertNum(p, num1);
+		return num1;
+	}
+	int num2 = getNum(p);
+	//printf("\n\n num2 = %d \n", num2);
+    num = num2 - num1;
     insertNum(p, num);
-	printf("\n\n sub = %d \n", num);
+	//printf("\n\n sub = %d \n", num);
 	return num;
 }
 
@@ -54,7 +71,7 @@ int clear_calc(pilha *p){
 		getNum(p);
 		return 0;
 	}else{
-		printf("Erro ao evaziar a pilha!\nA pilha ja esta vazia\n\n");
+		//printf("Erro ao evaziar a pilha!\nA pilha ja esta vazia\n\n");
 		return 1;
 	}
 }

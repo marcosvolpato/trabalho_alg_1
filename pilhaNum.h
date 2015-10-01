@@ -12,7 +12,7 @@ typedef struct Pilha{
 }pilha;
 
 void *inicia();
-void empty(pilha *p);
+int isEmpty(pilha *p);
 void consulta(pilha *p);
 void insertNum(pilha *p, int num);
 int getNum(pilha *p);
