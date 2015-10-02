@@ -1,18 +1,34 @@
 /*
- * title: Pilha 
- * date: 20/09/2015
- * description: Exercicio de ALG1.
- *				Consiste em uma pilha de inteiros
- *				Deve-se criar uma pilha e usar a função iniciar().
- *				Para empilhar deve-se usar o a função insertNum().
- *				E para desempilhar deve-se usar a função getNum().
- * author: Allan Ribeiro da Costa   NºUSP 9364819
- *         Marcos Vinicius Volpato  NºUSP 9364872
- * 
+ * Title: 		Polish Calculator 
+ *
+ * Date: 		02/10/2015
+ *
+ * Description: Trabalho de ALG1 da USP ICMC
+ *				Consiste em uma calculadora que recebe como entrada numeros inteiros positivos
+ *				e utiliza notação polonesa para fazer o calculo.
+ *				São 4 operações permitidas: soma, subtração, divisão e multiplicação indicados
+ *				pelos sinais +, -, / e * respectivamente.
+ *				O programa faz uso de uma pilha de inteiros para armazenar os numeros informados
+ *				pelo usuario que informa uma expressão completa do calculo desejado.
+ *				
+ * Usage:		Exemplo de expressão a inserir: E90E20E15E13-*E5+/
+ *				O resultado esperado é 2.
+ *				A notação polonesa recebe os numeros primeiro e o operador depois, quando um 
+ *				operador é inserido ele desempilha os dois ultimos numeros e os calcula
+ * 				empilhado novamente o resultado. O caracter E é usado para indicar que um 
+ *				numero sera inserido.
+ *
+ * Repository: 	https://github.com/marcosvolpato/trabalho_alg_1
+ *
+ * Authors:	 	name: Allan Ribeiro da Costa
+ *				uri: https://github.com/allan074
+ *				e-mail: <email>
+ *
+ *         		name: Marcos Vinicius Volpato
+ * 				uri: https://github.com/marcosvolpato
+ *				e-mail: volpatomv@gmail.com
  *
  */
- 
- //TESTE DE PULLREQUEST!!!
  
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,10 +36,9 @@
 #include "loop.h"
 
 int main(int argc, char *argv[]) {
-	//setlocale(LC_ALL, "Portuguese");
 	
+	//inicia o loop principal em loop.c
 	loop();
-	
 	system("pause");
 	return 0;
 }
