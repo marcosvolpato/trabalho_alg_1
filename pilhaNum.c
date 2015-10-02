@@ -108,12 +108,11 @@ void consulta(pilha *p){
 	no *aux = p->topo;
 	while(aux != NULL){
 		printf("%d", aux->num);
-		if(aux->anterior != NULL)
+		if(aux->anterior != NULL){
 			aux = aux->anterior;
-		else{
 			printf(" ");
+		}else
 			break;
-		}
 	}
 }
 
