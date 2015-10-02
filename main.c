@@ -6,8 +6,8 @@
  * Description: Trabalho de ALG1 da USP ICMC
  *				Consiste em uma calculadora que recebe como entrada numeros inteiros positivos
  *				e utiliza notação polonesa para fazer o calculo.
- *				São 4 operações permitidas: soma, subtração, divisão e multiplicação indicados
- *				pelos sinais +, -, / e * respectivamente.
+ *				São 6 operações permitidas: soma, subtração, divisão ,multiplicação, fatorial 
+ *				e potencia indicados pelos sinais +, -, /, *, ! e ^ respectivamente.
  *				O programa faz uso de uma pilha de inteiros para armazenar os numeros informados
  *				pelo usuario que informa uma expressão completa do calculo desejado.
  *				
@@ -20,11 +20,11 @@
  *
  * Repository: 	https://github.com/marcosvolpato/trabalho_alg_1
  *
- * Authors:	 	name: Allan Ribeiro da Costa
+ * Authors:	 	name: Allan Ribeiro da Costa  
  *				uri: https://github.com/allan074
  *				e-mail: <email>
  *
- *         		name: Marcos Vinicius Volpato
+ *         		name: Marcos Vinicius Volpato 
  * 				uri: https://github.com/marcosvolpato
  *				e-mail: volpatomv@gmail.com
  *

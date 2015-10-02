@@ -4,11 +4,11 @@
  *
  * Description: Função que contem o loop principal do programa Polish Calculator
  *
- * Authors:	 	name: Allan Ribeiro da Costa
+ * Authors:	 	name: Allan Ribeiro da Costa  
  *				uri: https://github.com/allan074
  *				e-mail: <email>
  *
- *         		name: Marcos Vinicius Volpato
+ *         		name: Marcos Vinicius Volpato  
  * 				uri: https://github.com/marcosvolpato
  *				e-mail: volpatomv@gmail.com
  *
@@ -81,8 +81,15 @@ void exibeHelp(){
 	system("cls");
 	printf("\n\n>> POLISH CALCULATOR <<\n");
     printf("   > HELP <\n\n");
-    printf("Clear: C\n");
-    printf("Operacoes: -, +, *, /\n\n");
+    printf("Clear: C\n\n");
+    printf("Operacoes:\n");
+    printf("'+': soma\n");
+    printf("'-': subtracao\n");
+    printf("'*': multiplicacao\n");
+    printf("'/': divisao\n");
+    printf("'!': fatorial\n");
+    printf("'^': potencia\n");
+    printf("\n\n");
     printf("Obs: Use E para indicar a entrada de um numero\n\n");
     printf("Obs: Apenas inteiros positivos sao permitidos,\n");
     printf("     por tanto, nao use numeros negativos ou de ponto flutuante\n\n");
@@ -183,6 +190,20 @@ int calcular(char g_char[], pilha *p){
 			//se for '*' faz uma multiplicação
             if(g_char[i] == '*'){
 				faz_mult(p);
+				i++;
+				continue;
+			}
+			
+			//se for '^' faz uma potencia
+            if(g_char[i] == '^'){
+				faz_pow(p);
+				i++;
+				continue;
+			}
+			
+			//se for '!' faz um fatorial
+            if(g_char[i] == '!'){
+				faz_fatorial(p);
 				i++;
 				continue;
 			}
