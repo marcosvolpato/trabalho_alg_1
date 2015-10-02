@@ -6,11 +6,11 @@
  *				Para empilhar deve-se usar o a função insertNum().
  *				E para desempilhar deve-se usar a função getNum().
  * 
- * Authors:	 	name: Allan Ribeiro da Costa   
+ * Authors:	 	name: Allan Ribeiro da Costa
  *				uri: https://github.com/allan074
  *				e-mail: <email>
  *
- *         		name: Marcos Vinicius Volpato  
+ *         		name: Marcos Vinicius Volpato
  * 				uri: https://github.com/marcosvolpato
  *				e-mail: volpatomv@gmail.com
  *
@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pilhaNum.h"
+#define RUN_CODES 0
 
 //aloca espaço para uma pilha e retorna seu ponteiro
 void *inicia(){
@@ -38,7 +39,8 @@ int isEmpty(pilha *p){
 no *aloca(int num){
 	no *novo=(no *) malloc(sizeof(no));
 	if(!novo){
-		printf("Erro! Sem memoria!\n");
+		if(!RUN_CODES)
+			printf("Erro! Sem memoria!\n");
 		exit(1);
 	}else{
 		novo->num = num;
@@ -78,8 +80,10 @@ void push(pilha *p, int num){
 //retira o no do topo e retorna o int desse nó
 int pop(pilha *p){
 	if(isEmpty(p)){
-		printf("Erro fatal de pilha! O programa será encerrado.");
-		system("pause");
+		if(!RUN_CODES){
+			printf("Erro fatal de pilha! O programa será encerrado.");
+			system("pause");
+		}
 		exit(0);
 	}else{
 		int num = p->topo->num;

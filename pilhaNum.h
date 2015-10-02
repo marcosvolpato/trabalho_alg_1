@@ -6,11 +6,11 @@
  *				Para empilhar deve-se usar o a função insertNum().
  *				E para desempilhar deve-se usar a função getNum().
  * 
- * Authors:	 	name: Allan Ribeiro da Costa   
+ * Authors:	 	name: Allan Ribeiro da Costa
  *				uri: https://github.com/allan074
  *				e-mail: <email>
  *
- *         		name: Marcos Vinicius Volpato  
+ *         		name: Marcos Vinicius Volpato
  * 				uri: https://github.com/marcosvolpato
  *				e-mail: volpatomv@gmail.com
  *

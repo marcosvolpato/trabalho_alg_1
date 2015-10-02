@@ -20,11 +20,11 @@
  *
  * Repository: 	https://github.com/marcosvolpato/trabalho_alg_1
  *
- * Authors:	 	name: Allan Ribeiro da Costa  
+ * Authors:	 	name: Allan Ribeiro da Costa
  *				uri: https://github.com/allan074
  *				e-mail: <email>
  *
- *         		name: Marcos Vinicius Volpato 
+ *         		name: Marcos Vinicius Volpato
  * 				uri: https://github.com/marcosvolpato
  *				e-mail: volpatomv@gmail.com
  *
@@ -34,11 +34,13 @@
 #include <stdlib.h>
 #include <locale.h>
 #include "loop.h"
+#define RUN_CODES 0
 
 int main(int argc, char *argv[]) {
 	
 	//inicia o loop principal em loop.c
 	loop();
-	system("pause");
+	if(!RUN_CODES)
+		system("pause");
 	return 0;
 }

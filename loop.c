@@ -4,11 +4,11 @@
  *
  * Description: Função que contem o loop principal do programa Polish Calculator
  *
- * Authors:	 	name: Allan Ribeiro da Costa  
+ * Authors:	 	name: Allan Ribeiro da Costa
  *				uri: https://github.com/allan074
  *				e-mail: <email>
  *
- *         		name: Marcos Vinicius Volpato  
+ *         		name: Marcos Vinicius Volpato
  * 				uri: https://github.com/marcosvolpato
  *				e-mail: volpatomv@gmail.com
  *
@@ -22,9 +22,11 @@
 #include "loop.h"
 #include "faz_calculo.h"
 #define MAX_LENTH 200
+#define RUN_CODES 0
 
 void exibeHeader();
 void exibeHelp();
+void tiraEspaco(char str[]);
 
 int loop(){
 	
@@ -33,12 +35,15 @@ int loop(){
     char g_char[MAX_LENTH];
     
     //exibe o cabeçalho do programa
-    exibeHeader();
+    if(!RUN_CODES)
+    	exibeHeader();
     
     //loop principal
     while(1){
         gets(g_char);
-        
+        if(strlen(g_char) > 1)
+        	tiraEspaco(g_char);
+        	
         //define a saida do programa
         char sair_s[] = "s";
         char sair_S[] = "S";
@@ -49,7 +54,8 @@ int loop(){
         char help_h[] = "h";
         char help_H[] = "H";
         if(!strcmp(g_char, help_h) || !strcmp(g_char, help_H)){
-        	exibeHelp();
+        	if(!RUN_CODES)
+        		exibeHelp();
         	fflush(stdin);
         	continue;
 		}
@@ -57,8 +63,10 @@ int loop(){
         //entra na função que trata cada char da string informada pelo usuario
         int erro = calcular(g_char, p);
         if(erro == 1){
-        	exibeHeader();
-        	printf("\nErro! Para fazer um calculo, inicie com E\n");
+        	if(!RUN_CODES){
+        		exibeHeader();
+        		printf("\nErro! Para fazer um calculo, inicie com E\n");
+			}
 		}
     }
     return 1;
@@ -152,8 +160,10 @@ int calcular(char g_char[], pilha *p){
 					faz_calculo(p);
 				else{
 					clear_calc(p);
-					exibeHeader();
-					printf("\nErro! Voce deve usar necessariamente \'E\' para informar a entrada de um numero\n");
+					if(!RUN_CODES){
+						exibeHeader();
+						printf("\nErro! Voce deve usar necessariamente \'E\' para informar a entrada de um numero\n");
+					}
 				}
 				i++;
 				continue;
@@ -211,15 +221,18 @@ int calcular(char g_char[], pilha *p){
 			//se for C limpa a pilha
 			if(isClear(g_char[i])){
 				clear_calc(p);
-				exibeHeader();
-				printf("\nPilha Vazia\n");
+				if(!RUN_CODES){
+					exibeHeader();
+					printf("\nPilha Vazia\n");
+				}
 				i++;
 				continue;
 			}
 			
 			//se for V faz uma consulta na pilha
 			if(isConsulta(g_char[i]) && strlen(g_char) == 1){
-				consulta(p);
+				if(!RUN_CODES)
+					consulta(p);
 				i++;
 			}
 				
@@ -227,11 +240,13 @@ int calcular(char g_char[], pilha *p){
 		if(!isConsulta(g_char[i-1]))
 			//consulta que exibe a pilha ao contrario
 			consulta_inversa(p);
-		printf("\n");
+		if(!RUN_CODES)
+			printf("\n");
 		return 0;
 	}else{
 		//se o char indice 0 for V exibe a consulta
 		if(isConsulta(g_char[0]))
+			if(!RUN_CODES)
 				consulta(p);
 				
 		else{
@@ -246,7 +261,22 @@ int calcular(char g_char[], pilha *p){
 		
 	
 }
-
+void tiraEspaco(char str[]){
+	char * c = (char *) malloc(strlen(str)*sizeof(char));
+	int i = 0, j = 0;
+	char * aux;
+	aux = c;
+	while(str[i] != '\0'){
+		if(str[i] != ' ' && str[i] != '\0' ){
+			c[j] = str[i];
+			j++;
+		}
+		i++;
+	}
+	c[j] = '\0';
+	strcpy(str, c);
+	free(aux);
+}
 
 
 
