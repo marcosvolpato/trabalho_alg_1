@@ -10,8 +10,8 @@ Description:
 Trabalho de ALG1 da USP ICMC
 				     Consiste em uma calculadora que recebe como entrada numeros inteiros positivos
 				     e utiliza notação polonesa para fazer o calculo.
-				     São 4 operações permitidas: soma, subtração, divisão e multiplicação indicados
-				     pelos sinais +, -, / e * respectivamente.
+				     São 6 operações permitidas: soma, subtração, divisão ,multiplicação, fatorial
+				     e potencia indicados pelos sinais +, -, /, *, ! e ^ respectivamente.
 				     O programa faz uso de uma pilha de inteiros para armazenar os numeros informados
 				     pelo usuario que informa uma expressão completa do calculo desejado.
 				
